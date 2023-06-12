@@ -23,6 +23,11 @@ input RegisterInput {
     email: String
     password: String
     confirmPassword: String
+    age: Int
+    weight: Int
+    height: Int
+    activeLevel: String
+    goal: String
 }
 
 input LoginInput {

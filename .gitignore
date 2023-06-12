@@ -1,1 +1,27 @@
-node_module/
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build output
+/build/
+/dist/
+
+# Environment variables
+.env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Testing
+/coverage/
+/.nyc_output/

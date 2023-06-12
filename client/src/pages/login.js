@@ -10,7 +10,8 @@ import { Box, Button, TextField, Typography, Stack, Alert, Container } from "@mu
 
 const LOGIN_USER = gql`
     mutation login(
-        &loginInput: LoginInput
+        $loginInput: LoginInput
+        $loginInput: LoginInput
     ) {
         loginUser(
             loginInput: $loginInput
@@ -63,18 +64,13 @@ function Login(props) {
                 onChange={onChange}
             />
         </Stack>
-        <Box>
-            {Object.keys(errors).length > 0 && (
+        {errors.map(function(error) {
+            return (
                 <Alert severity="error">
-                    <ul>
-                        {Object.values(errors).map((value) => (
-                            <li key={value}>{value}</li>
-                        ))}
-                    </ul>
+                    {error.message}
                 </Alert>
-            )}
-        </Box>
-    
+            );
+        })}
 
         <Button variant="contained" onClick={onSubmit}>Login</Button>
 
