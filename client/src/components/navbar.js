@@ -12,6 +12,8 @@ function Navbar() {
             <Box alighItems="right" sx= {{flexGrow: 1, textAlign: "right "}}>
                 <Link to="/login" style= {{textDecoration: "none", color: "white", marginRight: "10px"}} >Login</Link>
                 <Link to="/register" style= {{textDecoration: "none", color: "white"}} >Register</Link>
+                <Link to="/exercises" style= {{textDecoration: "none", color: "white", marginLeft: "10px"}} >Exercises</Link>
+                <Link to="/workoutScheduler" style= {{textDecoration: "none", color: "white", marginLeft: "10px"}} >Workout Scheduler</Link>
             </Box>
             </Toolbar>
         </AppBar>

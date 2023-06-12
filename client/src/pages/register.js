@@ -78,17 +78,13 @@ function Register(props) {
                     onChange={onChange}
                 />
             </Stack>
-            <Box>
-                {Object.keys(errors).length > 0 && (
-                    <Alert severity="error">
-                        <ul>
-                            {Object.values(errors).map((value) => (
-                                <li key={value}>{value}</li>
-                            ))}
-                        </ul>
-                    </Alert>
-                )}
-            </Box>
+            {errors.map(function(error) {
+            return (
+                <Alert severity="error">
+                    {error.message}
+                </Alert>
+            );
+        })}
 
             <Button variant="contained" onClick={onSubmit}>Register</Button>
 

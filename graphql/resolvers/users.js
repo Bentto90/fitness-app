@@ -17,7 +17,13 @@ module.exports = {
             const newUser = new User({
                 username: username,
                 email: email.toLowerCase(),
-                password: hashedPassword
+                password: hashedPassword,
+                age: age,
+                weight: weight,
+                height: height,
+                activeLevel: activeLevel,
+                goal: goal
+
             });
 
             const token = jwt.sign(
