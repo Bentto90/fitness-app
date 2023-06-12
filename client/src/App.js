@@ -7,6 +7,7 @@ import Login from './pages/login';
 import WorkoutScheduler from './pages/WorkoutScheduler';
 import Exercises from './pages/Exercises';
 import FoodSearch from './components/FoodSearch';
+import WorkoutSplit from './components/WorkoutSplit';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path ="workoutScheduler" element={<WorkoutScheduler />} />
         <Route path ="exercises" element={<Exercises />} />
         <Route path ="foodSearch" element={<FoodSearch />} />
+        <Route path ="workoutSplit" element={<WorkoutSplit />} />
       </Routes>
     </div>
   );

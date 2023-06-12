@@ -1,27 +1,17 @@
 import React, { useState } from 'react';
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 const WorkoutScheduler = () => {
   const [schedule, setSchedule] = useState([]);
   const [workoutLogs, setWorkoutLogs] = useState([]);
 
-  const daysOfWeek = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   const handleAddDay = (event) => {
     event.preventDefault();
     const day = event.target.day.value;
     if (!schedule.includes(day)) {
-      setSchedule((prevSchedule) => {
-        const filteredSchedule = prevSchedule.filter((d) => d !== day);
-        return [...filteredSchedule, day];
-      });
+      setSchedule((prevSchedule) => [...prevSchedule, day]);
     }
     event.target.reset();
   };
@@ -35,12 +25,7 @@ const WorkoutScheduler = () => {
     const workout = event.target.workout.value;
     const sets = event.target.sets.value;
     const reps = event.target.reps.value;
-    const log = {
-      day,
-      workout,
-      sets,
-      reps
-    };
+    const log = { day, workout, sets, reps };
     setWorkoutLogs((prevLogs) => [...prevLogs, log]);
     event.target.reset();
   };
@@ -57,7 +42,9 @@ const WorkoutScheduler = () => {
             </option>
           ))}
         </select>
-        <button type="submit">Add Day</button>
+        <Button variant="contained" size="small" type="submit">
+          Add Day
+        </Button>
       </form>
 
       {schedule.length > 0 ? (
@@ -65,26 +52,54 @@ const WorkoutScheduler = () => {
           {daysOfWeek.map((day) => (
             schedule.includes(day) && (
               <div key={day} className="scheduler-card">
-                <h3>{day}</h3>
-                <button onClick={() => handleDeleteDay(day)}>Delete Day</button>
+                <div className="scheduler-header">
+                  <h3>
+                    {day}
+                    <span> - </span>
+                    <Button variant="contained" size="small" onClick={() => handleDeleteDay(day)}>
+                      Delete
+                    </Button>
+                  </h3>
+                </div>
+                <div className="exercise-table-container">
+                  <TableContainer component={Paper} style={{ width: '50%', margin: '0 auto' }}>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Exercise</TableCell>
+                          <TableCell align="right">Sets</TableCell>
+                          <TableCell align="right">Reps</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {workoutLogs.map((log, index) => {
+                          if (log.day === day) {
+                            return (
+                              <TableRow key={index}>
+                                <TableCell component="th" scope="row">
+                                  {log.workout}
+                                </TableCell>
+                                <TableCell align="right">{log.sets}</TableCell>
+                                <TableCell align="right">{log.reps}</TableCell>
+                              </TableRow>
+                            );
+                          }
+                          return null;
+                        })}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </div>
                 <form onSubmit={(event) => handleAddWorkout(event, day)}>
                   <input type="text" name="workout" placeholder="Add Workout" required />
                   <label htmlFor="sets">Sets:</label>
                   <input type="number" name="sets" required />
                   <label htmlFor="reps">Reps:</label>
                   <input type="number" name="reps" required />
-                  <button type="submit">Add Workout</button>
+                  <Button variant="contained" size="small" type="submit">
+                    Add Workout
+                  </Button>
                 </form>
-                {workoutLogs.map((log, index) => {
-                  if (log.day === day) {
-                    return (
-                      <p key={index}>
-                        Workout: {log.workout} | Sets: {log.sets} | Reps: {log.reps}
-                      </p>
-                    );
-                  }
-                  return null;
-                })}
               </div>
             )
           ))}

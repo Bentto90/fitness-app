@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Box, Typography } from '@mui/material';
 
 const Exercises = () => {
   const [muscleGroups, setMuscleGroups] = useState([]);
@@ -60,7 +61,6 @@ const Exercises = () => {
 
   return (
     <div>
-      <h2>Exercise Search</h2>
       <form onSubmit={handleSearch}>
         <label htmlFor="muscleGroup">Muscle Group:</label>
         <select id="muscleGroup" value={selectedMuscleGroup} onChange={handleMuscleGroupChange}>
@@ -75,23 +75,39 @@ const Exercises = () => {
       </form>
 
       {exercises.length > 0 && (
-        <div>
-          <h3>Exercises:</h3>
-          <ul>
+        <Box sx={{ backgroundColor: '#f5f5f5', borderRadius: '5px', padding: '20px', marginTop: '20px' }}>
+          <Typography variant="h3" component="h3" mb={2}>
+            Exercises:
+          </Typography>
+          <Box component="ul" sx={{ listStyleType: 'none', paddingInlineStart: 0 }}>
             {exercises.map((exercise) => (
-              <li key={exercise.id} onClick={() => handleExerciseClick(exercise.id)}>
+              <Box
+                component="li"
+                key={exercise.id}
+                onClick={() => handleExerciseClick(exercise.id)}
+                sx={{ cursor: 'pointer' }}
+              >
                 {exercise.name}
-              </li>
+              </Box>
             ))}
-          </ul>
-        </div>
+          </Box>
+        </Box>
       )}
 
       {selectedExercise && (
-        <div>
-          <h3>Exercise Instructions:</h3>
-          <div dangerouslySetInnerHTML={{ __html: exerciseInstructions }} />
-        </div>
+        <Box
+          sx={{
+            backgroundColor: '#f5f5f5',
+            borderRadius: '5px',
+            padding: '20px',
+            marginTop: '20px',
+          }}
+        >
+          <Typography variant="h3" component="h3" mb={2}>
+            Exercise Instructions:
+          </Typography>
+          <Typography variant="body1" component="div" dangerouslySetInnerHTML={{ __html: exerciseInstructions }} />
+        </Box>
       )}
     </div>
   );
