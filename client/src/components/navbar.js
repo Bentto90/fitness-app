@@ -14,6 +14,7 @@ function Navbar() {
                 <Link to="/register" style= {{textDecoration: "none", color: "white"}} >Register</Link>
                 <Link to="/exercises" style= {{textDecoration: "none", color: "white", marginLeft: "10px"}} >Exercises</Link>
                 <Link to="/workoutScheduler" style= {{textDecoration: "none", color: "white", marginLeft: "10px"}} >Workout Scheduler</Link>
+                <Link to="/foodSearch" style= {{textDecoration: "none", color: "white", marginLeft: "10px"}} >Nutrition</Link>
             </Box>
             </Toolbar>
         </AppBar>
