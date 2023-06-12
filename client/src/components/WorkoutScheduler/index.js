@@ -17,8 +17,17 @@ const WorkoutScheduler = () => {
   const handleAddDay = (event) => {
     event.preventDefault();
     const day = event.target.day.value;
-    setSchedule((prevSchedule) => [...prevSchedule, day]);
+    if (!schedule.includes(day)) {
+      setSchedule((prevSchedule) => {
+        const filteredSchedule = prevSchedule.filter((d) => d !== day);
+        return [...filteredSchedule, day];
+      });
+    }
     event.target.reset();
+  };
+
+  const handleDeleteDay = (day) => {
+    setSchedule((prevSchedule) => prevSchedule.filter((d) => d !== day));
   };
 
   const handleAddWorkout = (event, day) => {
@@ -53,28 +62,31 @@ const WorkoutScheduler = () => {
 
       {schedule.length > 0 ? (
         <div className="scheduler-container">
-          {schedule.map((day, index) => (
-            <div key={index} className="scheduler-card">
-              <h3>{day}</h3>
-              <form onSubmit={(event) => handleAddWorkout(event, day)}>
-                <input type="text" name="workout" placeholder="Add Workout" required />
-                <label htmlFor="sets">Sets:</label>
-                <input type="number" name="sets" required />
-                <label htmlFor="reps">Reps:</label>
-                <input type="number" name="reps" required />
-                <button type="submit">Add Workout</button>
-              </form>
-              {workoutLogs.map((log, index) => {
-                if (log.day === day) {
-                  return (
-                    <p key={index}>
-                      Workout: {log.workout} | Sets: {log.sets} | Reps: {log.reps}
-                    </p>
-                  );
-                }
-                return null;
-              })}
-            </div>
+          {daysOfWeek.map((day) => (
+            schedule.includes(day) && (
+              <div key={day} className="scheduler-card">
+                <h3>{day}</h3>
+                <button onClick={() => handleDeleteDay(day)}>Delete Day</button>
+                <form onSubmit={(event) => handleAddWorkout(event, day)}>
+                  <input type="text" name="workout" placeholder="Add Workout" required />
+                  <label htmlFor="sets">Sets:</label>
+                  <input type="number" name="sets" required />
+                  <label htmlFor="reps">Reps:</label>
+                  <input type="number" name="reps" required />
+                  <button type="submit">Add Workout</button>
+                </form>
+                {workoutLogs.map((log, index) => {
+                  if (log.day === day) {
+                    return (
+                      <p key={index}>
+                        Workout: {log.workout} | Sets: {log.sets} | Reps: {log.reps}
+                      </p>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            )
           ))}
         </div>
       ) : (
