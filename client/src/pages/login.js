@@ -11,7 +11,6 @@ import { Box, Button, TextField, Typography, Stack, Alert, Container } from "@mu
 const LOGIN_USER = gql`
     mutation login(
         $loginInput: LoginInput
-        $loginInput: LoginInput
     ) {
         loginUser(
             loginInput: $loginInput

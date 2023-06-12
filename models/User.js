@@ -27,7 +27,7 @@ const userSchema = new Schema({
         required: true
      },
     activeLevel: { 
-        type: Number,
+        type: String,
         required: true
      },
     goal: { 

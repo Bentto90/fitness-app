@@ -7,7 +7,7 @@ function Navbar() {
         <AppBar position="static">
             <Toolbar>
             <Typography variant="h6" component="div">
-                <Link to="/" style= {{textDecoration: "none", color: "white"}} >FNF</Link>
+                <Link to="/" style= {{textDecoration: "none", color: "white"}} ><img></img>FNF</Link>
             </Typography>
             <Box alighItems="right" sx= {{flexGrow: 1, textAlign: "right "}}>
                 <Link to="/login" style= {{textDecoration: "none", color: "white", marginRight: "10px"}} >Login</Link>
