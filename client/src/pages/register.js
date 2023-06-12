@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { useForm } from "../utility/hooks";
 import { useMutation } from "@apollo/react-hooks";
+import { Box, Button, TextField, Typography, Stack, Alert, Container } from "@mui/material";
 
 import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, TextField, Typography, Stack, Alert, Container } from "@mui/material";
+
 
 const REGISTER_USER = gql`
     mutation Mutation(
@@ -78,17 +79,11 @@ function Register(props) {
                     onChange={onChange}
                 />
             </Stack>
-            <Box>
-                {Object.keys(errors).length > 0 && (
-                    <Alert severity="error">
-                        <ul>
-                            {Object.values(errors).map((value) => (
-                                <li key={value}>{value}</li>
-                            ))}
-                        </ul>
-                    </Alert>
-                )}
-            </Box>
+            {errors.map(function(error) {
+            return (
+                <Alert severity="error">{error.message}</Alert>
+            )
+        })}
 
             <Button variant="contained" onClick={onSubmit}>Register</Button>
 

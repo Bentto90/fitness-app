@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./pages/homepage"
 import Navbar from "./components/navbar"
 import Register from './pages/register';
+import Login from './pages/login';
 import WorkoutScheduler from './pages/WorkoutScheduler';
 import Exercises from './pages/Exercises';
-
 function App() {
   return (
     <div className="App">
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path ="workoutScheduler" element={<WorkoutScheduler />} />
         <Route path ="exercises" element={<Exercises />} />
       </Routes>
