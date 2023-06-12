@@ -1,14 +1,23 @@
+const express = require('express');
 const { ApolloServer }  = require('apollo-server');
+const path = require('path');
 const mongoose = require('mongoose');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
+
 
 const MONGODB ="mongodb+srv://cch3056:finalproject@apolloserver.mv7xxrq.mongodb.net/?retryWrites=true&w=majority";
 
 const server = new ApolloServer({
     typeDefs,
     resolvers
+});
+
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 mongoose.connect(MONGODB, {useNewUrlParser: true})
