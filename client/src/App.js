@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom"
 import Home from "./pages/homepage"
 import Navbar from "./components/navbar"
 import Register from './pages/register';
+import Login from './pages/login';
 import WorkoutScheduler from './pages/WorkoutScheduler';
 import Exercises from './pages/Exercises';
-import Login from './pages/login';
 import FoodSearch from './components/FoodSearch';
 
 function App() {
