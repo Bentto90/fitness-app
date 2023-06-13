@@ -1,5 +1,5 @@
 const messagesResolvers = require('./messages');
-const usersResolvers = require('./users');
+const usersResolvers = require('./Users');
 
 module.exports = {
     Query: {
