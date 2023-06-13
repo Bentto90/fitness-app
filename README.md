@@ -1,15 +1,21 @@
-# fitness-app
-fitness app for MERN STACK project
+# Fit, Not Fat!
+Fitness app for MERN STACK project
+
+## Table of Contents
+
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Technologies Used](#technologies-used)
+  - [Github app link](#github-app-link)
+  - [Deployed link](#deployed-link)
 
 
-## Describtion
+## Description
 
 This is a fitness app that allows users to create a workout plan and track their progress. The user can create a workout plan and add exercises to it. The user can also view their progress on a dashboard. The user can also view their last workout and add exercises to it.
 
-this app is deployed on heroku: https://secure-woodland-66919.herokuapp.com/
 
-
-## technology used
+## Technologies used
 
 * HTML
 * CSS
@@ -25,9 +31,11 @@ this app is deployed on heroku: https://secure-woodland-66919.herokuapp.com/
 * Material UI
 * AXIOS
 
-##
+## Github app link
+https://github.com/Bentto90/fitness-app
 
-
+## Deployed link
+https://secure-woodland-66919.herokuapp.com/
 
 
 
