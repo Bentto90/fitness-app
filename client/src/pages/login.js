@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { gql } from "graphql-tag";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, TextField, Typography, Stack, Alert, Container } from "@mui/material";
+import { Button, TextField, Typography, Stack, Alert, Container } from "@mui/material";
 
 const LOGIN_USER = gql`
     mutation login(
