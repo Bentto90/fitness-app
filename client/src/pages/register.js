@@ -42,6 +42,7 @@ const REGISTER_USER = gql`
             height
             activeLevel
             goal
+            weightUnits
             token
         }
     }
@@ -120,7 +121,7 @@ function Register(props) {
                     <Select
                     labelId="weight-unit-label"
                     label="Weight Unit"
-                    name="weightUnit"
+                    name="weightUnits"
                     value={values.weightUnit || ''}
                     onChange={onChange}
                 >
@@ -138,7 +139,7 @@ function Register(props) {
                     <Select
                     labelId="activity-level-label"
                     label="Activity Level"
-                    name="activityLevel"
+                    name="activeLevel"
                     value={values.activityLevel || ''}
                     onChange={onChange}
                 >

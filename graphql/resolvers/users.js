@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     Mutation: {
-        async registerUser(_, {registerInput: {username, email, password} }) {
+        async registerUser(_, {registerInput: {username, email, password, weight, height, age, activeLevel, goal, weightUnits} }) {
             const oldUser = await User.findOne ({ email });
 
             if (oldUser) {
@@ -18,12 +18,12 @@ module.exports = {
                 username: username,
                 email: email.toLowerCase(),
                 password: hashedPassword,
-                age: age,
-                weight: weight,
+                weight: parseInt(weight),
                 height: height,
+                age: parseInt(age),
                 activeLevel: activeLevel,
-                goal: goal
-
+                goal: goal,
+                weightUnits: weightUnits,
             });
 
             const token = jwt.sign(
@@ -34,14 +34,14 @@ module.exports = {
                 }
             );
 
-            newUser.token = token;
-
+            // newUser.token = token;
 
             const res = await newUser.save();
 
             return {
                 id: res.id,
-                ...res._doc
+                ...res._doc,
+                token
             };
 
                               

@@ -11,6 +11,12 @@ type User {
     username: String
     email: String
     password: String
+    age: Int
+    weight: Int
+    height: Int
+    activeLevel: String
+    goal: String
+    weightUnits: String
     token: String
 }
 
@@ -28,6 +34,7 @@ input RegisterInput {
     height: Int
     activeLevel: String
     goal: String
+    weightUnits: String
 }
 
 input LoginInput {
