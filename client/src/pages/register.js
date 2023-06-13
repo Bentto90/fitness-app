@@ -72,7 +72,7 @@ function Register(props) {
         onError({ graphQLErrors }) {
             setErrors(graphQLErrors);
         },
-        variables: { registerInput: values }
+        variables: { registerInput: {...values, age: parseInt(values.age), weight: parseInt(values.weight )} }
       
     });
 
