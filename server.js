@@ -1,4 +1,3 @@
-const express = require('express');
 const { ApolloServer }  = require('apollo-server');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -14,11 +13,6 @@ const server = new ApolloServer({
     resolvers
 });
 
-app.use(express.static('public'));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-});
 
 mongoose.connect(MONGODB, {useNewUrlParser: true})
     .then(() => {
